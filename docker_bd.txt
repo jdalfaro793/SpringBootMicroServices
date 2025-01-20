@@ -1,0 +1,11 @@
+//mysql image
+//alumnos_bd
+//123456 pw
+
+docker run --name image-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=alumnos_bd -d mysql 
+
+//postgres image
+//cursos_bd
+//123456 pw
+
+docker run --name image-postgres -p 5432:5432 -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=cursos_bd  -d postgres

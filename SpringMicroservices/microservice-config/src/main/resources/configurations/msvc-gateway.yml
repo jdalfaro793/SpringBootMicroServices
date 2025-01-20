@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mvsc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: students
+          uri: 'http://localhost:8098'
+          predicates:
+            - Path=/api/student/**
+        - id: courses
+          uri: 'http://localhost:8099'
+          predicates:
+            - Path=/api/course/**
+eureka:
+  client:
+    register-with-eureka: false
+
