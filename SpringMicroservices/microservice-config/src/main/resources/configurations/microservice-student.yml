@@ -1,15 +1,14 @@
 server:
-  port: 8098
+  port: 8090
 
 spring:
   application:
-    name: msvc-student
+    name: microservice-student
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/alumnos_bd
-    username: root
-    password: 123456
-
+    url: ${MYSQLDB_URL}
+    username: ${MYSQLDB_USER}
+    password: ${MYSQLDB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: create
@@ -18,7 +17,7 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: microservice-eureka
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://microservice-eureka:8761/eureka/

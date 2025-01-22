@@ -1,15 +1,16 @@
 server:
   port: 8761
-  
+
 spring:
   application:
-    name: msvc-eureka
+    name: microservice-eureka
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: microservice-eureka
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://microservice-eureka:${server.port}/eureka/
+

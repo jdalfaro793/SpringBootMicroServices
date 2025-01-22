@@ -1,24 +1,24 @@
 server:
-  port: 8099
+  port: 9090
 
 spring:
   application:
-    name: msvc-course
+    name: microservice-course
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/cursos_bd
-    username: postgres
-    password: 123456
-
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: create
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+
 eureka:
   instance:
-    hostname: localhost
+    hostname: microservice-eureka
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://microservice-eureka:8761/eureka/
