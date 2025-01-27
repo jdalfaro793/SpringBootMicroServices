@@ -4,11 +4,17 @@ server:
 spring:
   application:
     name: microservice-student
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9898/realms/micro-services/protocol/openid-connect/certs
+          issuer-uri: http://localhost:9898/realms/micro-services
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${MYSQLDB_URL}
-    username: ${MYSQLDB_USER}
-    password: ${MYSQLDB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/alumnos_bd
+    username: root
+    password: 123456
   jpa:
     hibernate:
       ddl-auto: create
@@ -20,4 +26,4 @@ eureka:
     hostname: microservice-eureka
   client:
     service-url:
-      defaultZone: http://microservice-eureka:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/

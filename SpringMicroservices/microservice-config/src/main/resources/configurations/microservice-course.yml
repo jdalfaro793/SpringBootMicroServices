@@ -4,11 +4,17 @@ server:
 spring:
   application:
     name: microservice-course
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9898/realms/micro-services/protocol/openid-connect/certs
+          issuer-uri: http://localhost:9898/realms/micro-services
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/cursos_bd
+    username: postgres
+    password: 123456
   jpa:
     hibernate:
       ddl-auto: create
@@ -21,4 +27,4 @@ eureka:
     hostname: microservice-eureka
   client:
     service-url:
-      defaultZone: http://microservice-eureka:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/

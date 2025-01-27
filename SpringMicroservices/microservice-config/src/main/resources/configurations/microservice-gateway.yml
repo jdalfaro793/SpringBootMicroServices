@@ -2,7 +2,7 @@ eureka:
   client:
     register-with-eureka: true
     serviceUrl:
-      defaultZone: http://microservice-eureka:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
 server:
   port: 8080
@@ -10,6 +10,12 @@ server:
 spring:
   application:
     name: microservice-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9898/realms/micro-services/protocol/openid-connect/certs
+          issuer-uri: http://localhost:9898/realms/micro-services
   cloud:
     gateway:
       discovery:
@@ -17,10 +23,10 @@ spring:
           enabled: true
       routes:
         - id: students
-          uri: http://microservice-student:8090
+          uri: http://localhost:8090
           predicates:
             - Path=/api/student/**
         - id: courses
-          uri: http://microservice-course:9090
+          uri: http://localhost:9090
           predicates:
             - Path=/api/course/**
