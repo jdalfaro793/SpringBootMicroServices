@@ -10,6 +10,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Represents a course entity.
+ * This class is mapped to the "courses" table in the database.
+ */
 @Data
 @Entity
 @Builder
@@ -18,12 +22,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Course {
 	
+	/**
+	 * The unique identifier for the course.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	/**
+	 * The name of the course.
+	 */
 	private String name;
 	
+	/**
+	 * The teacher of the course.
+	 */
 	private String teacher;
 	
 }
